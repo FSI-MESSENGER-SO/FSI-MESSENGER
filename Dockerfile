@@ -14,5 +14,7 @@ COPY . .
 
 EXPOSE 3000
 
+CMD["npm", "install", "nodemon"]
+
 CMD ["node", "server.js"]
 
