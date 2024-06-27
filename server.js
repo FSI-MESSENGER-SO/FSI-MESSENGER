@@ -6,7 +6,7 @@ const PORT = process.env.PORT || 3000;
 const cors = require("cors");
 
 app.use(cors({
-    origin: 'http://localhost:5173',
+    origin: 'https://meek-cucurucho-7a3448.netlify.app/',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
