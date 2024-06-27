@@ -16,7 +16,7 @@ services:
     container_name: FSI-MESSENGER
     image: mongo:latest
     ports:
-      - "27017:27017"
+      - "27018:27017"
   mongo-express:
     image: mongo-express
     ports:
