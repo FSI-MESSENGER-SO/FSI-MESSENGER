@@ -1,8 +1,8 @@
 FROM node:19
 
-RUN mkdir -p /usr/src/app
+RUN mkdir -p /usr
 
-WORKDIR /usr/src/app
+WORKDIR /usr
 
 COPY package*.json ./
 
@@ -14,5 +14,5 @@ COPY . .
 
 EXPOSE 3000
 
-CMD ["nodemon", "server.js"]
+CMD ["node", "server.js"]
 
