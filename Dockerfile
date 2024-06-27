@@ -1,20 +1,21 @@
 FROM node:19
 
-RUN mkdir -p /usr
+# Create app directory
+WORKDIR /usr/src/app
 
-WORKDIR /usr
-
+# Install dependencies
 COPY package*.json ./
-
 RUN npm install
 
+# Install nodemon globally
 RUN npm install -g nodemon
 
+# Bundle app source
 COPY . .
 
+# Expose port 3000
 EXPOSE 3000
 
-CMD["npm", "install", "nodemon"]
-
-CMD ["node", "server.js"]
+# Command to run the application
+CMD ["npm", "run", "dev"]
 
