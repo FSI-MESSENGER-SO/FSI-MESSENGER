@@ -1,18 +1,19 @@
-version: "3"
+version: '3.8'
 
 services:
   nginx-ssl-proxy:
     image: danieldent/nginx-ssl-proxy
     restart: always
     environment:
-      UPSTREAM: app:8080
-      SERVERNAME: app:8080
-      EXTRANAMES: app:8080,test2.example.com
+      UPSTREAM: web:3000
+      SERVERNAME: web:3000
+      EXTRANAMES: web:3000,test2.example.com
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - "/etc/letsencrypt"
+
   web:
     container_name: FSI-MESSENGER-UPC-SISTEMAS-OPERATIVOS-2024
     restart: always
@@ -24,11 +25,16 @@ services:
       - mongo-express
     volumes:
       - .:/usr/src/app
+    environment:
+      - MONGO_URL=mongodb://mongo:27017
+      - NODE_ENV=production
+
   mongo:
     container_name: FSI-MESSENGER
     image: mongo:latest
     ports:
       - "27018:27017"
+
   mongo-express:
     image: mongo-express
     ports:
