@@ -13,8 +13,6 @@ services:
       - "443:443"
     volumes:
       - "/etc/letsencrypt"
-    depends_on:
-      - web
 
   web:
     container_name: FSI-MESSENGER-UPC-SISTEMAS-OPERATIVOS-2024
