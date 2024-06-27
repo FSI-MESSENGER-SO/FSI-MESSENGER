@@ -21,7 +21,7 @@ services:
     restart: always
     build: .
     ports:
-      - "5001:3000"
+      - "5000:3000"
     links:
       - mongo
       - mongo-express
@@ -35,12 +35,12 @@ services:
     container_name: FSI-MESSENGER
     image: mongo:latest
     ports:
-      - "27018:27017"
+      - "27017:27017"
 
   mongo-express:
     image: mongo-express
     ports:
-      - "8081:8081"
+      - "8080:8080"
     depends_on:
       - mongo
     environment:
@@ -50,7 +50,3 @@ services:
       - ME_CONFIG_MONGODB_ADMINPASSWORD=pass
       - ME_CONFIG_BASICAUTH_USERNAME=admin
       - ME_CONFIG_BASICAUTH_PASSWORD=pass
-
-networks:
-  default:
-    driver: bridge
