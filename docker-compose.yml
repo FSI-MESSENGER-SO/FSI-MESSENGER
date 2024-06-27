@@ -1,0 +1,32 @@
+version: "3"
+
+services:
+  web:
+    container_name: FSI-MESSENGER
+    restart: always
+    build: .
+    ports:
+      - "5001:3000"
+    links:
+      - mongo
+      - mongo-express
+    volumes:
+      - .:/usr/src/app
+  mongo:
+    container_name: FSI-MESSENGER
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+  mongo-express:
+    image: mongo-express
+    ports:
+      - "8081:8081"
+    depends_on:
+      - mongo
+    environment:
+      - ME_CONFIG_MONGODB_SERVER=mongo
+      - ME_CONFIG_MONGODB_PORT=27017
+      - ME_CONFIG_MONGODB_ADMINUSERNAME=admin
+      - ME_CONFIG_MONGODB_ADMINPASSWORD=pass
+      - ME_CONFIG_BASICAUTH_USERNAME=admin
+      - ME_CONFIG_BASICAUTH_PASSWORD=pass
