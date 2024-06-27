@@ -15,16 +15,15 @@ services:
       - "/etc/letsencrypt"
 
   web:
+    image: 'docker-dev-fsi-messenger:latest'
+    build:
+      context: .
     container_name: FSI-MESSENGER-UPC-SISTEMAS-OPERATIVOS-2024
-    restart: always
-    build: .
+    depends_on:
+      - mongo-express
+      - nginx-ssl-proxy
     ports:
       - "5000:3000"
-    links:
-      - mongo
-      - mongo-express
-    volumes:
-      - .:/usr/src/app
 
   mongo:
     container_name: FSI-MESSENGER
