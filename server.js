@@ -5,8 +5,17 @@ const PORT = process.env.PORT || 3000;
 //Web Application Security
 const cors = require("cors");
 
+const allowedOrigins = ['https://meek-cucurucho-7a3448.netlify.app', 'http://localhost:5173'];
+
 app.use(cors({
-    origin: 'https://meek-cucurucho-7a3448.netlify.app',
+    origin: (origin, callback) => {
+        if (!origin) return callback(null, true);
+        if (allowedOrigins.includes(origin)) {
+            return callback(null, true);
+        } else {
+            return callback(new Error('No permitido por CORS'));
+        }
+    },
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization']
 }));
