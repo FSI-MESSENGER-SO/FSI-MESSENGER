@@ -2,7 +2,7 @@ version: "3"
 
 services:
   web:
-    container_name: FSI-MESSENGER
+    container_name: FSI-MESSENGER-UPC-SISTEMAS-OPERATIVOS-2024
     restart: always
     build: .
     ports:
