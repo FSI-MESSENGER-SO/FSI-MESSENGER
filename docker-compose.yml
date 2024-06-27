@@ -27,9 +27,6 @@ services:
       - mongo-express
     volumes:
       - .:/usr/src/app
-    environment:
-      - MONGO_URL=mongodb://mongo:27017
-      - NODE_ENV=production
 
   mongo:
     container_name: FSI-MESSENGER
